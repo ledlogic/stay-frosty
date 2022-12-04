@@ -1,0 +1,258 @@
+/* st-char.css */
+
+.st-elem {
+	position: absolute;
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+}
+
+.st-label {
+	text-transform: uppercase;
+}
+
+.st-total {
+	font-weight: bold;
+}
+
+.st-tb th {
+	background-color: #000;
+	color: #fff;
+}
+
+.st-tb th, .st-tb td {
+	border: 1px solid #000;
+	padding: 2px;
+	vertical-align: top;
+}
+
+.st-complications th,
+.st-derivedstatistics th,
+.st-equipment th,
+.st-lifepath th,
+.st-points th,
+.st-skills th,
+.st-statistics th,
+.st-talents th,
+.st-weapons th {
+	text-align: center;
+	text-transform: uppercase;
+}
+
+/* name */
+
+.st-name-label {
+	top: 4px;
+	left: 0px;
+	width: 80px;
+}
+
+.st-name {
+	top: 0px; 
+	left: 90px; 
+	width: 180px;
+}
+
+/* age */
+
+.st-age-label {
+	top: 34px;
+	left: 0px;
+	width: 80px;
+}
+.st-age {
+	top: 30px; 
+	left: 90px; 
+	width: 180px;
+}
+
+/* occupation */
+
+.st-occupation-label {
+	top: 64px;
+	left: 0px;
+	width: 80px;
+}
+.st-occupation {
+	top: 60px;
+	left: 90px; 
+	width: 180px;
+	text-align: center;
+}
+
+/* img */
+
+.st-img {
+	border: 1px solid #000;
+	position: absolute;
+	top: 90px;
+	left: 0px;
+	width: 270px;
+}
+
+.st-img img {
+	width: 100%;
+}
+
+/* complications */
+
+.st-complications {
+	position: absolute;
+	font-size: 10px;
+	top: 468px; 
+	left: 0px; 
+	width: 1010px;
+}
+
+.st-complications td.st-skill-lbl {
+	width: 370px;
+}
+
+.st-complications td.st-skill-val {
+	text-align: center;
+	width: 100px;
+}
+
+/* equipment */
+
+.st-equipment {
+	position: absolute;
+	font-size: 14px;
+	left: 750px; 
+    top: 732px;
+	width: 260px;
+}
+
+.st-equipment th {
+	text-align: center;
+}
+
+.st-equipment td {
+	text-align: left;
+	text-transform: uppercase;
+}
+
+/* lifepath */
+
+.st-lifepath {
+	position: relative;
+	top: 626px; 
+	left: 0px; 
+	width: 490px;
+}
+
+/* points */
+
+.st-points {
+	position: absolute;
+	font-size: 14px;
+    left: 280px;
+    top: 0px;
+	width: 730px;
+}
+
+.st-points td {
+	text-align: center;
+}
+
+/* stats */
+
+.st-statistics {
+	position: absolute;
+	font-size: 14px;
+	font-weight: normal;
+    top: 54px;
+	left: 280px;
+	width: 200px;
+}
+
+.st-statistics .st-stat {
+	text-align: center;
+	width: 36px;
+}
+
+.st-statistics .st-stat-extreme {
+	color: blue;
+	font-weight: bold;
+}
+
+.st-statistics .st-stat-high {
+	color: green;
+	font-weight: bold;
+}
+
+.st-statistics .st-stat-medium {
+	color: orange;
+	font-weight: bold;
+}
+
+.st-statistics .st-stat-low {
+	color: red;
+	font-weight: bold;
+}
+
+.st-derivedstatistics {
+	position: absolute;
+	font-size: 14px;
+	font-weight: normal;
+	top: 54px;
+	left: 490px;
+	width: 520px;
+}
+
+/* weapons */
+
+.st-weapons {
+	position: absolute;
+	font-size: 14px;
+	left: 280px; 
+	top: 336px;
+	width: 730px;
+}
+
+.st-weapons td,
+.st-weapons-desc td {
+	text-align: center;
+}
+
+.st-weapons-desc td.st-name {
+	text-align: left;
+}
+
+/* skills */
+
+.st-skills {
+	position: absolute;
+	font-size: 14px;
+    left: 500px;
+    top: 626px;
+	width: 242px;
+}
+
+.st-skills td.st-skill-lbl {
+	width: 370px;
+}
+
+.st-skills td.st-skill-val {
+	text-align: center;
+	width: 100px;
+}
+
+/* talents */
+
+.st-talents {
+	position: absolute;
+	font-size: 14px;
+    left: 750px;
+    top: 626px;
+	width: 260px;
+}
+
+.st-talents td.st-skill-lbl {
+	width: 370px;
+}
+
+.st-talents td.st-skill-val {
+	text-align: center;
+	width: 100px;
+}

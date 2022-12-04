@@ -1,0 +1,21 @@
+/* st-desc.css */
+
+.st-skills-desc th,
+.st-stats-desc th,
+.st-talents-desc th,
+.st-weapons-desc th {
+    text-align: center;
+	text-transform: uppercase;
+}
+
+.st-skills-desc th, .st-skills-desc td,
+.st-stats-desc th, .st-stats-desc td,
+.st-talents-desc th, .st-talents-desc td,
+.st-weapons-desc th, .st-weapons-desc td {
+	padding: 4px;
+}
+
+.st-weapons-desc th.st-weapon-name,
+.st-weapons-desc td.st-weapon-name {
+    text-align: left;
+}
