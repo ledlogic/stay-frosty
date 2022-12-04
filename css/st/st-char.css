@@ -67,8 +67,30 @@ h1 {
 	width: 20%;
 }
 
+.st-frosty th.mos {
+	text-transform: uppercase;
+}
+
 .st-frosty td {
 	vertical-align: top;
+}
+
+.st-frosty td.rank {
+	text-transform: capitalize;
+}
+
+.st-frosty td.mos table th, .st-frosty td.mos table td,
+.st-frosty td.rank table th, .st-frosty td.rank table td {
+	border: 1px solid transparent;
+	font-size: 9px; 
+	text-align: left;
+	text-transform: capitalize;
+	vertical-align: top;
+}
+
+.st-frosty td.mos table th {
+	font-weight: bold;
+	width: 30%;
 }
 
 .st-frosty th, .st-frosty td {

@@ -56,11 +56,11 @@ st.mos = [
 			},
 			{
 				"type": "equipment",
-				"which": "satchel charge"
+				"inventory": "satchel charge"
 			},
 			{
 				"type": "equipment",
-				"which": "toolkit"
+				"inventory": "toolkit"
 			}
 		]
 	},
@@ -100,7 +100,7 @@ st.mos = [
 				"when": "initiative rolls for planned attacks"
 			},
 			{	"type": "equipment",
-				"which": "wrist-comp"
+				"inventory": "wrist-comp"
 			}
 		]
 	},
@@ -116,7 +116,7 @@ st.mos = [
 			},
 			{ 
 				"type": "equipment",
-				"which": "medpack"
+				"inventory": "medpack"
 			}
 		] 
 	},
@@ -128,15 +128,15 @@ st.mos = [
 		"benefits": [
 			{
 				"type": "ability",
-				"which": "can use psi-powers: Start with three powers" 
+				"inventory": "can use psi-powers: Start with three powers" 
 			},
 			{ 
 				"type": "equipment",
-				"which": "no helmet"
+				"inventory": "no helmet"
 			},
 			{
 				"type": "rank",
-				"which": "lieutenant"
+				"inventory": "lieutenant"
 			}
 		]
 	},
@@ -170,7 +170,7 @@ st.mos = [
 			}, 
 			{ 
 				"type": "equipment",
-				"which": "badass beret"
+				"inventory": "badass beret"
 			}
 		]
 		

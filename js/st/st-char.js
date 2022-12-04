@@ -14,8 +14,7 @@ st.char = {
 			"frostiness": 1,
 			"mos": null,
 			"rank": null
-		},
-		
+		}
 	},
 
 	init: function() {
@@ -79,11 +78,43 @@ st.char = {
 			foundMOS = matches === matchesExpected ? mos : null;
 		}
 		st.char.spec.frosty.mos = foundMOS;
+		st.char.processMOS();
+	},
+	
+	processMOS: function() {
+		st.log("char.processMOS");
+		var mos = st.char.spec.frosty.mos;
+		_.each(mos.benefits, function(benefit) {
+			if (benefit.type === "rank") {
+				st.log(benefit)
+				st.char.spec.frosty.rank = benefit.inventory;
+			}			
+		});
 	},
 		
 	randomRank: function() {
 		st.log("char.randomRank");
-		var rank = {name: "private"};		
-		st.char.spec.frosty.rank = rank;
+		if (st.char.spec.frosty.rank == null) {
+			var roll = st.math.dieN(6);
+			var rank = "";
+			if (roll <= 3) {
+				rank = "private";
+			} else if (roll <=5) {
+				rank = "sergeant";
+			} else {
+				rank = "lieutenant";
+			}
+			st.char.spec.frosty.rank = rank;
+		}
+	},
+	
+	findRank: function(name) {
+		var rank = null;
+		_.map(st.ranks, function(val, key) {
+			if (rank == null && val.name === name) {
+				rank = val;
+			}
+		});
+		return rank;
 	}
 };
