@@ -21,6 +21,7 @@ h1 {
 
 .st-attributes {
 	border: 1px solid #000000;
+	margin-bottom: 10px;
 	text-align: center;
 	width: 977px;
 }
@@ -38,6 +39,33 @@ h1 {
 }
 
 .st-attributes th, .st-attributes td {
+	border: 1px solid #000000;
+	font-family: "Courier New", serif;
+	min-height: 2em;
+	height: 2em;
+	text-align: center;
+}
+
+.st-frosty {
+	border: 1px solid #000000;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 977px;
+}
+
+.st-frosty th.st-frosty-desc {
+	font-family: 'Pixel Emulator', sans-serif;
+	background: #000000;
+	color: #ffffff;
+	font-size: 22px;
+	text-align: center;
+}
+
+.st-frosty th {
+	text-transform: capitalize;
+}
+
+.st-frosty th, .st-frosty td {
 	border: 1px solid #000000;
 	font-family: "Courier New", serif;
 	min-height: 2em;

@@ -16,5 +16,11 @@ st.math = {
 	},
 	dieArray : function(array) {
 		return Math.floor(Math.random() * array.length);
+	},
+	dieMap : function(map) {
+		var size = _.size(map);
+		var i = Math.floor(Math.random() * size);
+		var key = _.keys(map)[i];
+		return map[key];
 	}
 };
