@@ -36,6 +36,7 @@ h1 {
 
 .st-attributes th {
 	text-transform: capitalize;
+	width: 25%;
 }
 
 .st-attributes th, .st-attributes td {
@@ -63,6 +64,11 @@ h1 {
 
 .st-frosty th {
 	text-transform: capitalize;
+	width: 20%;
+}
+
+.st-frosty td {
+	vertical-align: top;
 }
 
 .st-frosty th, .st-frosty td {
@@ -71,4 +77,9 @@ h1 {
 	min-height: 2em;
 	height: 2em;
 	text-align: center;
+}
+
+.st-frosty td.frostiness {
+	padding-left: 5%;
+    text-align: left;	
 }

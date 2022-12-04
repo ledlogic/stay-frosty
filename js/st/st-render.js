@@ -54,7 +54,13 @@ st.render = {
 		r2.push("<tr>");
 		_.map(st.char.spec.frosty, function(val, key) {
 			r1.push("<th>" + key + "</th>");
-			if (key === "mos") {
+			if (key === "frostiness") {
+				var str = []
+				for (var i=1; i<=6; i++) {
+					str.push("___" + i + " " + st.frostiness[i] + "</br>");
+				}
+				r2.push("<td class=\"frostiness\">" + str.join("") + "</td>");
+			} else if (key === "mos") {
 				r2.push("<td>" + val.name + "</td>");
 			} else if (key === "rank") {
 				r2.push("<td>" + val.name + "</td>");

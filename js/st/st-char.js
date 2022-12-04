@@ -11,7 +11,7 @@ st.char = {
 		frosty: {
 			"hit points": 0,
 			"armor": 0,
-			"tension/frostiness": 1,
+			"frostiness": 1,
 			"mos": null,
 			"rank": null
 		},
@@ -61,15 +61,13 @@ st.char = {
 		
 	randomMOS: function() {
 		st.log("char.randomMOS");
-		
 		var foundMOS = null;
 		while (foundMOS == null) {
 			var mos = st.mos[st.math.dieArray(st.mos)];
-			st.log(mos);
 			var matches = 0;
 			var matchesExpected = mos.attributeMax.length;
 			if (matchesExpected > 0) {
-				for (var i=0;i<matchesExpected;i++) {
+				for (var i=0; i<matchesExpected; i++) {
 					var am = mos.attributeMax[i];
 					_.map(am, function(max, attribute) {
 						var val = st.char.spec.attributes[attribute];
@@ -78,7 +76,6 @@ st.char = {
 					});
 				}
 			}
-			st.log(matches + "/" + matchesExpected);
 			foundMOS = matches === matchesExpected ? mos : null;
 		}
 		st.char.spec.frosty.mos = foundMOS;
