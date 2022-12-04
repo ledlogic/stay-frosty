@@ -11,9 +11,10 @@ var st = {
 		st.log("st.init");
 		st.math.init();
 		st.utils.init();
-		//st.render.init();
-		//st.char.init();
-		//st.data.init();
+		st.render.init();
+		st.char.init();
+		st.char.random();
+		st.render.render();
 	}
 };
 
