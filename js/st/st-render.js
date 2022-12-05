@@ -77,7 +77,8 @@ st.render = {
 				var benTable = st.render.renderBenefits(benefits);
 				r2.push("<td class=\"rank\">" + val + benTable + "</td>");
 			} else {
-				r2.push("<td>" + val + "</td>");
+				var keyClass = (key+"").replace(" ", "-");
+				r2.push("<td class=\"" + keyClass + "\">" + val + "</td>");
 			}
 		});
 		r1.push("</tr>");
