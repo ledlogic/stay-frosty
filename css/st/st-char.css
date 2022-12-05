@@ -4,6 +4,12 @@ h1 {
 	text-align: center;
 }
 
+.st-title {
+	background: #000000;
+	color: #ffffff;
+	font-size: 28px;
+}
+
 .st-elem {
 	position: absolute;
 	display: inline-block;
@@ -19,11 +25,41 @@ h1 {
 	font-weight: bold;
 }
 
+.st-name {
+	margin-bottom: 10px;
+	width: 977px;	
+}
+
+.st-name th, .st-name td {
+	font-family: "Courier New", serif;
+	font-size: 22px;	
+	padding: 0 4px;
+	text-transform: capitalize;	
+}
+
+.st-name th {
+	text-align: right;	
+	width: 100px;
+}
+
+.st-name td {
+	text-align: left;
+	font-family: "Ampersand";
+	width: 25%;
+}
+
 .st-attributes {
 	border: 1px solid #000000;
 	margin-bottom: 10px;
 	text-align: center;
 	width: 977px;
+}
+
+.st-attributes th, .st-attributes td {
+	border: 1px solid #000000;
+	min-height: 2em;
+	height: 2em;
+	text-align: center;
 }
 
 .st-attributes th.st-attributes-desc {
@@ -50,17 +86,9 @@ h1 {
 	font-weight: bold;
 }
 
-.st-attributes th, .st-attributes td {
-	border: 1px solid #000000;
-	min-height: 2em;
-	height: 2em;
-	text-align: center;
-}
-
 .st-frosty {
 	border: 1px solid #000000;
 	margin-bottom: 10px;
-	text-align: center;
 	width: 977px;
 }
 
@@ -77,6 +105,7 @@ h1 {
 	color: #ffffff;
 	font-family: 'Pixel Emulator', sans-serif;
 	font-size: 20px;
+	text-align: center;
 	text-transform: capitalize;
 	width: 20%;
 }
@@ -109,13 +138,6 @@ h1 {
 .st-frosty td.mos table th {
 	font-weight: bold;
 	width: 30%;
-}
-
-.st-frosty th, .st-frosty td {
-	border: 1px solid #000000;
-	min-height: 2em;
-	height: 2em;
-	text-align: center;
 }
 
 .st-frosty td.frostiness {

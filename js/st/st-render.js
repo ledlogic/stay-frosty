@@ -7,12 +7,54 @@ st.render = {
 	render: function() {
 		st.log("render skills");
 		st.render.renderReset();
+		st.render.renderName();
 		st.render.renderAttributes();
 		st.render.renderFrosty();
 		$(".st-page").removeClass("st-initial-state");
 	},
 	renderReset: function() {
 		$(".st-page-ft").html("");
+	},
+	renderName: function() {
+		st.log("render name");
+		var that = st.char;
+
+		var t = [];
+			
+		// skills
+		t.push("<table class=\"st-name\"><tbody>");
+
+		var r = [];
+
+		// rank
+		var rank = st.char.spec.frosty.rank;
+		r.push("<tr>");
+		r.push("<th>rank:</th>");
+		r.push("<td>" + rank + "</td>");
+		r.push("</tr>");
+		
+		// name
+		var name= st.char.spec.name;
+		r.push("<tr>");
+		r.push("<th>name:</th>");
+		r.push("<td>" + name + "</td>");
+		r.push("</tr>");
+		
+		// mos/level
+		var mosName= st.char.spec.frosty.mos.name;
+		r.push("<tr>");
+		r.push("<th>MOS:</th>");
+		r.push("<td>" + mosName + "</td>");
+
+		var level = st.char.spec.level;
+		r.push("<th>level:</th>");
+		r.push("<td>" + level + "</td>");
+		r.push("</tr>");		
+		
+		t.push(r.join(""));
+		t.push("</tbody></table>");
+
+		$(".st-page-ft").append(t.join(""));
 	},
 	renderAttributes: function() {
 		st.log("render attributes");

@@ -2,6 +2,8 @@
 
 st.char = {
 	spec: {
+		name: "",
+		level: 1,
 		attributes: {
 			"brains": 0,
 			"brawn": 0,
@@ -23,10 +25,20 @@ st.char = {
 	
 	random: function() {
 		st.log("char.random");
+		st.char.randomName();
 		st.char.randomAttributes();
 		st.char.randomMOS();
 		st.char.randomRank();
 		st.char.randomHitpoints();
+	},
+	
+	randomName: function() {
+		var firstIndex = st.math.dieArray(st.names.first);
+		var first = st.names.first[firstIndex];
+		
+		var lastIndex = st.math.dieArray(st.names.last);
+		var last = st.names.last[lastIndex];
+		st.char.spec.name = first + " " + last;
 	},
 	
 	randomStat: function() {
