@@ -2,14 +2,13 @@
 
 .st-page {
 	position: relative;
-	min-height: 200px;
+	min-height: 512px;
 	text-align: center;
 	width: 100%;
 }
 
 .st-page-ft {
 	margin: 0px auto;
-	height: 500px;
 	position: relative;
 	width: 980px;
 }

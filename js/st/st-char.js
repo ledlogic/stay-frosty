@@ -16,7 +16,8 @@ st.char = {
 			"frostiness": 1,
 			"mos": null,
 			"rank": null
-		}
+		},
+		equipment: []
 	},
 
 	init: function() {
@@ -30,6 +31,7 @@ st.char = {
 		st.char.randomMOS();
 		st.char.randomRank();
 		st.char.randomHitpoints();
+		st.char.randomEquipment();
 	},
 	
 	randomName: function() {
@@ -100,6 +102,16 @@ st.char = {
 			if (benefit.type === "rank") {
 				st.char.spec.frosty.rank = benefit.inventory;
 			}			
+			if (benefit.type === "equipment") {
+				if (benefit.roll) {
+					st.log("rolling for equipment");
+					var roll = st.math.dieN(6);
+					var result = benefit.roll[roll];
+					st.char.spec.equipment.push(result);
+				} else if (benefit.inventory) {
+					st.char.spec.equipment.push(benefit.inventory);
+				}
+			}			
 			if (benefit.type === "ability" && benefit.inventory === "psi-powers") {
 				var psi = [];
 				var size = _.size(st.psi);
@@ -140,5 +152,20 @@ st.char = {
 			}
 		});
 		return rank;
+	},
+	
+	randomEquipment: function() {
+		var baseEquipment = st.equipment.base;
+		_.each(baseEquipment, function(base) {
+			if (base.equipment === "infantry rifle") {
+				if (st.char.spec.equipment.indexOf("SAW") > -1) {
+					return;
+				}
+				if (st.char.spec.equipment.indexOf("sniper rifle") > -1) {
+					return;
+				}
+			}
+			st.char.spec.equipment.push(base.equipment);
+		});
 	}
 };

@@ -24,7 +24,7 @@ st.mos = [
 			},
 			{
 				"type": "equipment",
-				"when": "toolkit"
+				"inventory": "toolkit"
 			}			
 		]
 	},
@@ -40,7 +40,7 @@ st.mos = [
 			},
 			{
 				"type": "equipment",
-				"when": "wrist-comp"
+				"inventory": "wrist-comp"
 			}
 		]
 	},

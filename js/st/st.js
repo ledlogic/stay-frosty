@@ -11,6 +11,14 @@ var st = {
 		st.log("st.init");
 		st.math.init();
 		st.utils.init();
+		st.equipment.init();
+	},
+	
+	init2: function() {
+		st.weapon.init();
+	}, 
+	
+	init3: function() {
 		st.render.init();
 		st.char.init();
 		st.char.random();

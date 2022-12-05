@@ -3,24 +3,20 @@
 * {
 	font-family: 'Pixel Emulator', sans-serif;
 }
-
 p {
 	font-family: 'Pixel Emulator', sans-serif;
 }
-
 body {
 	color: #000;
 }
-
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Pixel Emulator', sans-serif;
+	text-align: center;
 	text-transform: uppercase;
 }
-
 h1 {
 	font-size: 26px;
 }
-
 h2 {
 	font-size: 22px;
 }

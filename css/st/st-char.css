@@ -1,9 +1,5 @@
 /* st-char.css */
 
-h1 {
-	text-align: center;
-}
-
 .st-title {
 	background: #000000;
 	color: #ffffff;
@@ -24,6 +20,8 @@ h1 {
 .st-total {
 	font-weight: bold;
 }
+
+/* st-name */
 
 .st-name {
 	margin-bottom: 10px;
@@ -47,6 +45,8 @@ h1 {
 	font-family: "Ampersand";
 	width: 25%;
 }
+
+/* st-attributes */
 
 .st-attributes {
 	border: 1px solid #000000;
@@ -85,6 +85,8 @@ h1 {
 	font-size: 60px;
 	font-weight: bold;
 }
+
+/* st-frosty */
 
 .st-frosty {
 	border: 1px solid #000000;
@@ -154,3 +156,43 @@ h1 {
 	font-size: 60px;
 	font-weight: bold;
 }
+
+/* st-weapons */
+
+.st-weapons {
+	border: 1px solid #000000;
+	margin-bottom: 10px;
+	width: 977px;
+}
+
+.st-weapons th.st-weapons-desc {
+	background: #000000;
+	color: #ffffff;
+	font-family: 'Pixel Emulator', sans-serif;
+	font-size: 22px;
+	text-align: center;
+}
+
+.st-weapons th {
+	background-color: #000000;
+	border: 1px solid #000000;
+	color: #ffffff;
+	font-family: "Courier New", serif;
+	font-size: 20px;
+	text-align: center;
+	text-transform: capitalize;
+	width: 20%;
+}
+
+.st-weapons th.weapon {
+	font-family: 'Pixel Emulator', sans-serif;
+}
+
+.st-weapons td {
+	border: 1px solid #000000;
+	font-family: "Courier New", serif;
+	text-transform: capitalize;
+	vertical-align: top;
+}
+
+	

@@ -10,6 +10,7 @@ st.render = {
 		st.render.renderName();
 		st.render.renderAttributes();
 		st.render.renderFrosty();
+		st.render.renderWeapons();
 		$(".st-page").removeClass("st-initial-state");
 	},
 	renderReset: function() {
@@ -17,7 +18,6 @@ st.render = {
 	},
 	renderName: function() {
 		st.log("render name");
-		var that = st.char;
 
 		var t = [];
 			
@@ -58,8 +58,6 @@ st.render = {
 	},
 	renderAttributes: function() {
 		st.log("render attributes");
-		var that = st.char;
-
 		var t = [];
 			
 		// skills
@@ -83,7 +81,6 @@ st.render = {
 	},
 	renderFrosty: function() {
 		st.log("render frosty");
-		var that = st.char;
 
 		var t = [];
 			
@@ -132,8 +129,8 @@ st.render = {
 
 		$(".st-page-ft").append(t.join(""));
 	},
-	
 	renderBenefits: function(benefits) {
+		st.log("render benefits");
 		var benArray = [];
 		benArray.push("<table>");
 		_.each(benefits, function(benefit) {
@@ -165,5 +162,48 @@ st.render = {
 		benArray.push("</table>");				
 		var benTable = benArray.join("");
 		return benTable;
+	},
+	renderWeapons: function() {
+		st.log("render weapons");
+
+		var t = [];
+			
+		// weapons
+		t.push("<table class=\"st-weapons\"><tbody>");
+		
+		// specs
+		var r = [];
+		var first = _.first(st.weapon.specs, 1);
+		_.each(first, function(spec) {
+			r.push("<tr class=\"st-weapons-desc\">");
+			_.map(spec, function(val, key) {
+				var slugKey = key.replace(" ", "-");
+				r.push("<th class=\"" + slugKey + "\">" + key + "</th>");
+			});
+			r.push("</tr>");
+		});
+		
+		// character weapons
+		_.each(st.char.spec.equipment, function(equipment) {
+			st.log("checking if weapon, " + equipment);
+			if (st.weapon.containsName(equipment)) {
+				st.log("is weapon");
+				var spec = st.weapon.getName(equipment);
+				if (spec) {
+					r.push("<tr>");
+					r.push("<td class=\"weapon\">" + spec.weapon + "</td>");
+					r.push("<td class=\"damage\">" + spec.damage + "</td>");
+					r.push("<td class=\"range\">" + spec.range + "</td>");
+					r.push("<td class=\"ammo\">" + spec.ammo + "</td>");
+					r.push("<td class=\"special\">" + spec.special + "</td>");
+					r.push("</tr>");
+				}
+			}
+		});
+		r.push("</tr>");
+		t.push(r.join(""));
+		t.push("</tbody></table>");
+
+		$(".st-page-ft").append(t.join(""));
 	}
 };
