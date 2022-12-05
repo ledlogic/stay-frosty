@@ -93,15 +93,16 @@ h1 {
 }
 
 .st-frosty th.st-frosty-desc {
-	font-family: 'Pixel Emulator', sans-serif;
 	background: #000000;
 	color: #ffffff;
+	font-family: 'Pixel Emulator', sans-serif;
 	font-size: 22px;
 	text-align: center;
 }
 
 .st-frosty th {
 	background-color: #000000;
+	border: 1px solid #000000;
 	color: #ffffff;
 	font-family: 'Pixel Emulator', sans-serif;
 	font-size: 20px;
@@ -115,11 +116,13 @@ h1 {
 }
 
 .st-frosty td {
+	border: 1px solid #000000;
 	font-family: "Courier New", serif;
 	vertical-align: top;
 }
 
 .st-frosty td.rank {
+	font-family: "Ampersand", sans-serif;
 	text-transform: capitalize;
 }
 
