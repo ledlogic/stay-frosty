@@ -98,6 +98,7 @@ st.render = {
 			// th
 			if (key === "mos") {
 				r1.push("<th class=\"mos\">" + key + "</th>");
+			} else if (key === "psi") {
 			} else {
 				r1.push("<th>" + key + "</th>");
 			}
@@ -118,6 +119,7 @@ st.render = {
 				var benefits = rank.benefits;
 				var benTable = st.render.renderBenefits(benefits);
 				r2.push("<td class=\"rank\">" + val + benTable + "</td>");
+			} else if (key === "psi") {
 			} else {
 				var keyClass = (key+"").replace(" ", "-");
 				r2.push("<td class=\"" + keyClass + "\">" + val + "</td>");
@@ -143,9 +145,17 @@ st.render = {
 				var r = st.math.dieN(6);
 				var res = benefit.roll[r];
 				benArray.push("<td>" + res + "</td>");
-			}					
+			}
 			if (benefit.inventory) {
-				benArray.push("<td>" + benefit.inventory + "</td>");
+				benArray.push("<td>");
+				benArray.push(benefit.inventory);
+				if (benefit.type === "ability" && benefit.inventory === "psi-powers") {
+					var psi = st.char.spec.frosty.psi;
+					for (var i=0; i<(psi ? psi.length : 0); i++) {
+						benArray.push("<br/>" + (i+1) + ": " + psi[i]);
+					}
+				}
+				benArray.push("</td>");
 			}
 			if (benefit.when) {
 				benArray.push("<td>" + benefit.when + "</td>");

@@ -98,8 +98,20 @@ st.char = {
 		var mos = st.char.spec.frosty.mos;
 		_.each(mos.benefits, function(benefit) {
 			if (benefit.type === "rank") {
-				st.log(benefit)
 				st.char.spec.frosty.rank = benefit.inventory;
+			}			
+			if (benefit.type === "ability" && benefit.inventory === "psi-powers") {
+				var psi = [];
+				var size = _.size(st.psi);
+				while (psi.length < 3) {
+					var i = st.math.dieN0(size);
+					var psiI = st.psi[i];
+					if (psi.indexOf(psiI.name) === -1) {
+						psi.push(psiI.name);
+					}
+				}
+				psi = psi.sort();
+				st.char.spec.frosty.psi = psi;
 			}			
 		});
 	},

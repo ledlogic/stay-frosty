@@ -128,7 +128,7 @@ st.mos = [
 		"benefits": [
 			{
 				"type": "ability",
-				"inventory": "can use psi-powers: Start with three powers" 
+				"inventory": "psi-powers" 
 			},
 			{ 
 				"type": "equipment",

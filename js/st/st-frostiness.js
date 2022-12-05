@@ -7,4 +7,4 @@ st.frostiness = {
 	4: "Frosty",
 	5: "Frozen",
 	6: "Ice-Cold"	
-}
+};

@@ -12,7 +12,10 @@ st.math = {
 		return ret;
 	},
 	dieN : function(die) {
-		return Math.floor(Math.random() * die) + 1;
+		return st.math.dieN0(die) + 1;
+	},
+	dieN0 : function(die) {
+		return Math.floor(Math.random() * die);
 	},
 	dieArray : function(array) {
 		return Math.floor(Math.random() * array.length);
