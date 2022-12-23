@@ -31,8 +31,12 @@ st.weapon = {
 		return ret;
 	},
 	containsName: function(name) {
+		st.log("st.weapon.containsName, name[" + name + "]");
 		var names = st.weapon.names();
-		return (names.indexOf(name) > -1);
+		st.log("names[" + names + "]");
+		var ret = (names.indexOf(name) > -1);
+		st.log("ret[" + ret + "]");
+		return ret;
 	},
 	getName: function(name) {
 		var names = st.weapon.names();

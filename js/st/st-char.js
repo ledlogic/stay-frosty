@@ -4,6 +4,7 @@ st.char = {
 	spec: {
 		name: "",
 		level: 1,
+		actions: 1,
 		attributes: {
 			"brains": 0,
 			"brawn": 0,
@@ -37,6 +38,7 @@ st.char = {
 		st.char.randomMOS();
 		st.char.randomRank();
 		st.char.levelMOSAttributes();
+		st.char.levelActions();
 		st.char.randomHitpoints();
 		st.char.randomEquipment();
 	},
@@ -47,6 +49,7 @@ st.char = {
 		
 		var lastIndex = st.math.dieArray(st.names.last);
 		var last = st.names.last[lastIndex];
+
 		st.char.spec.name = first + " " + last;
 	},
 	
@@ -56,6 +59,7 @@ st.char = {
 	
 	randomAttributes: function() {
 		st.log("char.randomAttributes");
+
 		var highest = { key: "", val: -1 };
 		_.map(st.char.spec.attributes, function(val, key) {
 			val = st.char.randomStat();
@@ -65,24 +69,35 @@ st.char = {
 				highest.val = val;
 			}
 		});
-		st.log(st.char.spec.attributes);
 		
 		// re-roll highest
-		st.log("rerolling " + highest.key);
 		st.char.spec.attributes[highest.key] = st.char.randomStat();
-		st.log(st.char.spec.attributes);
 	},
 	
-	levelMOSAttributes: function() {
+	levelActions: function() {
+		st.log("char.levelActions");
+
+		// leveling up
+		var level = st.char.spec.level;
+		st.log("level[" + level + "]");
+		
+		var additionalActions = Math.floor((level-1) / 2);
+		st.log("additionalActions[" + additionalActions + "]");
+		
+		st.char.spec.actions += additionalActions;
+	},
+	
+	levelMOSAttributes: function(i) {
 		st.log("char.levelMOSAttributes, i[" + i + "]");
 		
 		// leveling up
 		var level = st.char.spec.level;
 		st.log("level[" + level + "]");
+		
 		var mos = st.char.spec.frosty.mos;
 		var rank = st.char.spec.frosty.rank;
-		for (var i=2; i<=level;i++) {
-			st.char.levelAttributes(i, mos, rank);
+		for (var j=2; j<=level;j++) {
+			st.char.levelAttributes(j, mos, rank);
 		}
 	},
 	
@@ -118,6 +133,8 @@ st.char = {
 		
 		st.log("mods[" + mods + "]");
 		_.map(st.char.spec.attributes, function(val, key) {
+			st.log("st.char.spec.attributes[" + key + "][" + st.char.spec.attributes[key] + "]");
+			st.char.spec.attributes[key] -= mods[key];
 		});
 	},
 	
@@ -171,20 +188,26 @@ st.char = {
 		st.log("char.processMOS");
 		var mos = st.char.spec.frosty.mos;
 		_.each(mos.benefits, function(benefit) {
+			st.log("benefit[" + benefit + "]");
 			if (benefit.type === "rank") {
+				st.log("benefitrank");
 				st.char.spec.frosty.rank = benefit.inventory;
 			}			
 			if (benefit.type === "equipment") {
+				st.log("benefitequipment");
 				if (benefit.roll) {
 					st.log("rolling for equipment");
 					var roll = st.math.dieN(6);
 					var result = benefit.roll[roll];
+					st.log("result[" + result + "]");
+					benefit.inventory = result;
 					st.char.spec.equipment.push(result);
 				} else if (benefit.inventory) {
 					st.char.spec.equipment.push(benefit.inventory);
 				}
 			}			
 			if (benefit.type === "ability" && benefit.inventory === "psi-powers") {
+				st.log("benefitability");
 				var psi = [];
 				var size = _.size(st.psi);
 				while (psi.length < 3) {
@@ -237,16 +260,17 @@ st.char = {
 		return rank;
 	},
 	
+	hasEquipment: function(equipment) {
+		var ret = st.char.spec.equipment.indexOf(equipment) > -1;
+		return ret;
+	},
+	
 	randomEquipment: function() {
 		var baseEquipment = st.equipment.base;
 		_.each(baseEquipment, function(base) {
-			if (base.equipment === "infantry rifle") {
-				if (st.char.spec.equipment.indexOf("SAW") > -1) {
-					return;
-				}
-				if (st.char.spec.equipment.indexOf("sniper rifle") > -1) {
-					return;
-				}
+			// do not add infantry rifle if better gun already available
+			if (base.equipment == "infantry rifle" && (st.char.hasEquipment("LAW") || st.char.hasEquipment("SAW") || st.char.hasEquipment("sniper rifle"))) {
+				return;
 			}
 			st.char.spec.equipment.push(base.equipment);
 		});

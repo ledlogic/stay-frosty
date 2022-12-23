@@ -3,7 +3,7 @@ auto pistol,1d10,Short,d8,agile
 combat knife,1d8,HtH,-,-
 fist,1d4,HtH,-,stun
 flamer,2d6,Close,d6,"blast,terror"
-grenade,3d6,Close,d4,"AP1, blast"
+grenades,3d6,Close,d4,"AP1, blast"
 infantry rifle,2d6,Medium,d8,-
 LAW,5d6,Long,single use,"AP4,HW"
 satchel charge,5d6,-,single use,"AP5,blast,HW"

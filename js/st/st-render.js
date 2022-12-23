@@ -31,6 +31,10 @@ st.render = {
 		r.push("<tr>");
 		r.push("<th>rank:</th>");
 		r.push("<td>" + rank + "</td>");
+
+		var level = st.char.spec.level;
+		r.push("<th>level:</th>");
+		r.push("<td>" + level + "</td>");
 		r.push("</tr>");
 		
 		// name
@@ -38,6 +42,11 @@ st.render = {
 		r.push("<tr>");
 		r.push("<th>name:</th>");
 		r.push("<td>" + name + "</td>");
+		
+		var actions = st.char.spec.actions;
+		r.push("<th>actions:</th>");
+		r.push("<td>" + actions + "</td>");
+		r.push("</tr>");
 		r.push("</tr>");
 		
 		// mos/level
@@ -45,10 +54,6 @@ st.render = {
 		r.push("<tr>");
 		r.push("<th>MOS:</th>");
 		r.push("<td>" + mosName + "</td>");
-
-		var level = st.char.spec.level;
-		r.push("<th>level:</th>");
-		r.push("<td>" + level + "</td>");
 		r.push("</tr>");		
 		
 		t.push(r.join(""));
@@ -139,11 +144,9 @@ st.render = {
 				benArray.push("<th>" + benefit.type + ":</th>");
 			}
 			if (benefit.roll) {
-				var r = st.math.dieN(6);
-				var res = benefit.roll[r];
+				var res = benefit.inventory;
 				benArray.push("<td>" + res + "</td>");
-			}
-			if (benefit.inventory) {
+			} else if (benefit.inventory) {
 				benArray.push("<td>");
 				benArray.push(benefit.inventory);
 				if (benefit.type === "ability" && benefit.inventory === "psi-powers") {
