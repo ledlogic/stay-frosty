@@ -73,7 +73,17 @@ st.names = {
 		"Paul",
 		"Robert",
 		"John",
-		"James"
+		"James",
+		"Jace",
+		"Portia",
+		"Marcus",
+		"Ryo",
+		"Ishida",
+		"Emily",
+		"Griffin",
+		"Suki",
+		"Nyx",
+		"Devon"
 	],
 	"last": [
 		"Stingray",
@@ -136,6 +146,14 @@ st.names = {
 		"Verhoeven",
 		"Heinlein",
 		"Carpenter",
-		"Cameron"
+		"Cameron",
+		"Corso",
+		"Lin",
+		"Boone",
+		"Ryo",
+		"Kolburn",
+		"Jones",
+		"Harper",
+		"Taltherd"
 	]
 };
