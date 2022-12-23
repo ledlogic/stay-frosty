@@ -22,6 +22,12 @@ st.char = {
 
 	init: function() {
 		st.log("char.init");
+		
+		var url = $.url();
+		var level = url.param("level");
+		if (level) {
+			st.char.spec.level = level;
+		}
 	},
 	
 	random: function() {
@@ -68,10 +74,21 @@ st.char = {
 	
 	randomHitpoints: function() {
 		st.log("char.randomHitpoints");
-		var hp = st.math.die(1, 6, 4);
-		st.char.spec.frosty["hit points"] = hp;
+		var level = st.char.spec.level;
+		var hp = st.math.die(1, 6, 4, true);
+				
+		// bonus hp due to rank benefits
+		var rank = st.char.spec.frosty.rank;
+		var rankObj = st.char.findRank(rank);
+		_.each(rankObj.benefits, function(benefit) {
+			if (benefit.type === "equipment") {
+				// nothing here - handled in randomRank
+			} else if (benefit.type === "hitpoint") {
+				hp += st.math.die(level - 1, 10, 0, true);
+			}
+		});
 		
-		// TODO: add rank bonus
+		st.char.spec.frosty["hit points"] = hp;	
 	},
 		
 	randomMOS: function() {
@@ -147,11 +164,12 @@ st.char = {
 			var rankObj = st.char.findRank(rank);
 			_.each(rankObj.benefits, function(benefit) {
 				if (benefit.type === "equipment") {
-				//debugger;
 					if (benefit.inventory) {
 						st.char.spec.equipment.push(benefit.inventory);
 					}
-				}			
+				} else if (benefit.type === "hitpoint") {
+					// nothing here - handled in randomHitPoints
+				}
 			});				
 		}
 	},
