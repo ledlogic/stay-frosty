@@ -216,7 +216,7 @@ st.render = {
 		var t = [];
 		t.push("<table class=\"st-equipment\"><tbody>");
 		t.push("<tr>");
-		t.push("<th class=\"st-equipment-desc\">EQUIPMENT (carry 21-Brawn, more is disadvantage)</th>");
+		t.push("<th class=\"st-equipment-desc\">EQUIPMENT</th>");
 		t.push("</tr>");
 		t.push("</tbody></table>");
 
@@ -225,16 +225,15 @@ st.render = {
 		var r = [];
 		var cnt = 0;
 		_.each(st.char.spec.equipment, function(equipment) {
-			if (!st.weapon.containsName(equipment)) {
-				r.push("<div class=\"st-equipment-item\">" + equipment + "</div>");
-				cnt++;
-			}
+			r.push("<div class=\"st-equipment-item\">" + (cnt+1) + ":<br/>" + equipment + "</div>");
+			cnt++;
 		});
-		while (cnt<24) {
-			r.push("<div class=\"st-equipment-item\">&nbsp;</div>");
+		while (cnt<21-st.char.spec.attributes.brawn) {
+			r.push("<div class=\"st-equipment-item\">" + (cnt+1) + ":<br/></div>");
 			cnt++;
 		}		
 		r.push("<div class=\"st-clear\"></div>");
+		r.push("<p>carry " + (21-st.char.spec.attributes.brawn) + ", more is disadvantage</p>");
 		$(".st-page-ft").append(r.join(""));
 	}
 	
