@@ -19,7 +19,7 @@ st.char = {
 		},
 		equipment: []
 	},
-
+	
 	init: function() {
 		st.log("char.init");
 		
@@ -36,6 +36,7 @@ st.char = {
 		st.char.randomAttributes();
 		st.char.randomMOS();
 		st.char.randomRank();
+		st.char.levelMOSAttributes();
 		st.char.randomHitpoints();
 		st.char.randomEquipment();
 	},
@@ -70,8 +71,60 @@ st.char = {
 		st.log("rerolling " + highest.key);
 		st.char.spec.attributes[highest.key] = st.char.randomStat();
 		st.log(st.char.spec.attributes);
+	},
+	
+	levelMOSAttributes: function() {
+		st.log("char.levelMOSAttributes, i[" + i + "]");
 		
+		// leveling up
+		var level = st.char.spec.level;
+		st.log("level[" + level + "]");
+		var mos = st.char.spec.frosty.mos;
+		var rank = st.char.spec.frosty.rank;
+		for (var i=2; i<=level;i++) {
+			st.char.levelAttributes(i, mos, rank);
+		}
+	},
+	
+	levelAttributes: function(i, mos, rank) {
+		st.log("char.levelAttributes, i[" + i + "], mos.name[" + mos.name + "], rank[" + rank + "]");
 		
+		var mods = {};
+		_.map(st.char.spec.attributes, function(val, key) {
+			if (typeof mods[key] == "undefined") {
+				mods[key] = 0;
+			}
+			if (mods[key] === 0) {
+				var d20 = -1;
+				if ((d20 == -1) && (rank == "private") && ((key == "brawn") || (key == "dexterity"))) {
+					var d20a = st.math.dieN(20);
+					var d20b = st.math.dieN(20);
+					d20 = Math.min(d20a, d20b);
+					
+				} 
+				if ((d20 == -1) && (rank == "sergeant") && ((key == "brawn") || (key == "willpower"))) {
+					var d20a = st.math.dieN(20);
+					var d20b = st.math.dieN(20);
+					d20 = Math.min(d20a, d20b);
+				}
+				if ((d20 == -1) && (rank == "lieutenant") && ((key == "brains") || (key == "dexterity"))) {
+					var d20a = st.math.dieN(20);
+					var d20b = st.math.dieN(20);
+					d20 = Math.min(d20a, d20b);
+				}
+				if ((d20 == -1) && (mos.name == "psi ops") && ((key == "willpower"))) {
+					var d20a = st.math.dieN(20);
+					var d20b = st.math.dieN(20);
+					d20 = Math.min(d20a, d20b);
+				}
+				if (d20 == -1) {
+					d20 = st.math.dieN(20);
+				}
+				if (d20 < val) {
+					mods[key] = -1;
+				}
+			}
+		});
 	},
 	
 	randomHitpoints: function() {

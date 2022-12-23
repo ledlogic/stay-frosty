@@ -140,6 +140,11 @@
 	vertical-align: top;
 }
 
+.st-frosty td table th,
+.st-frosty td table td {
+	padding: 0 4px;
+}
+
 .st-frosty td.mos table th {
 	font-weight: bold;
 	width: 30%;
@@ -193,6 +198,4 @@
 	font-family: "Courier New", serif;
 	text-transform: capitalize;
 	vertical-align: top;
-}
-
-	
+}	
