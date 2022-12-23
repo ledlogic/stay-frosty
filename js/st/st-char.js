@@ -97,33 +97,27 @@ st.char = {
 			if (mods[key] === 0) {
 				var d20 = -1;
 				if ((d20 == -1) && (rank == "private") && ((key == "brawn") || (key == "dexterity"))) {
-					var d20a = st.math.dieN(20);
-					var d20b = st.math.dieN(20);
-					d20 = Math.min(d20a, d20b);
-					
-				} 
-				if ((d20 == -1) && (rank == "sergeant") && ((key == "brawn") || (key == "willpower"))) {
-					var d20a = st.math.dieN(20);
-					var d20b = st.math.dieN(20);
-					d20 = Math.min(d20a, d20b);
+					d20 = st.math.minDieN(20);		
+				} else if ((d20 == -1) && (rank == "sergeant") && ((key == "brawn") || (key == "willpower"))) {
+					d20 = st.math.minDieN(20);		
+				} else if ((d20 == -1) && (rank == "lieutenant") && ((key == "brains") || (key == "dexterity"))) {
+					d20 = st.math.minDieN(20);		
 				}
-				if ((d20 == -1) && (rank == "lieutenant") && ((key == "brains") || (key == "dexterity"))) {
-					var d20a = st.math.dieN(20);
-					var d20b = st.math.dieN(20);
-					d20 = Math.min(d20a, d20b);
-				}
-				if ((d20 == -1) && (mos.name == "psi ops") && ((key == "willpower"))) {
-					var d20a = st.math.dieN(20);
-					var d20b = st.math.dieN(20);
-					d20 = Math.min(d20a, d20b);
+				if ((d20 == -1) && (mos.name == "psi ops") && (key == "willpower")) {
+					d20 = st.math.minDieN(20);		
 				}
 				if (d20 == -1) {
 					d20 = st.math.dieN(20);
 				}
+				st.log("d20[" + d20 + "]");
 				if (d20 < val) {
 					mods[key] = -1;
 				}
 			}
+		});
+		
+		st.log("mods[" + mods + "]");
+		_.map(st.char.spec.attributes, function(val, key) {
 		});
 	},
 	

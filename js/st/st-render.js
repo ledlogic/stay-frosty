@@ -130,7 +130,7 @@ st.render = {
 		$(".st-page-ft").append(t.join(""));
 	},
 	renderBenefits: function(benefits) {
-		st.log("render benefits");
+		st.log("render benefits, benefits[" + benefits + "]");
 		var benArray = [];
 		benArray.push("<table>");
 		_.each(benefits, function(benefit) {

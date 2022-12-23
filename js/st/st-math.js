@@ -4,7 +4,7 @@ st.math = {
 	init: function() {
 		st.log("math.init");
 	},
-	die : function(qty, die, mod, display) {
+	die: function(qty, die, mod, display) {
 		var ret = mod;
 		if (display) {
 			st.log("rolling qty[" + qty + "], die[" + die + "], mod[" + mod + "]");
@@ -17,17 +17,29 @@ st.math = {
 		}
 		return ret;
 	},
-	dieN : function(die, display) {
+	dieN: function(die, display) {
 		var ret = st.math.dieN0(die) + 1;
 		if (display) {
 			st.log("rolling die[" + die + "], ret[" + ret + "]");
 		}
 		return ret;
 	},
-	dieN0 : function(die) {
+	dieN0: function(die) {
 		return Math.floor(Math.random() * die);
 	},
-	dieArray : function(array) {
+	dieArray: function(array) {
 		return Math.floor(Math.random() * array.length);
+	},
+	minDieN: function(die) {
+		var d20a = st.math.dieN(die);
+		var d20b = st.math.dieN(die);
+		var d20 = Math.min(d20a, d20b);
+		return d20;
+	},
+	maxDieN: function(die) {
+		var d20a = st.math.dieN(die);
+		var d20b = st.math.dieN(die);
+		var d20 = Math.max(d20a, d20b);
+		return d20;
 	}
 };
