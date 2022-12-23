@@ -11,6 +11,8 @@ st.render = {
 		st.render.renderAttributes();
 		st.render.renderFrosty();
 		st.render.renderWeapons();
+		st.render.renderEquipment();
+		
 		$(".st-page").removeClass("st-initial-state");
 	},
 	renderReset: function() {
@@ -207,5 +209,33 @@ st.render = {
 		t.push("</tbody></table>");
 
 		$(".st-page-ft").append(t.join(""));
+	},
+	renderEquipment: function() {
+		st.log("render equipment");
+
+		var t = [];
+		t.push("<table class=\"st-equipment\"><tbody>");
+		t.push("<tr>");
+		t.push("<th class=\"st-equipment-desc\">EQUIPMENT (carry 21-Brawn, more is disadvantage)</th>");
+		t.push("</tr>");
+		t.push("</tbody></table>");
+
+		$(".st-page-ft").append(t.join(""));
+
+		var r = [];
+		var cnt = 0;
+		_.each(st.char.spec.equipment, function(equipment) {
+			if (!st.weapon.containsName(equipment)) {
+				r.push("<div class=\"st-equipment-item\">" + equipment + "</div>");
+				cnt++;
+			}
+		});
+		while (cnt<24) {
+			r.push("<div class=\"st-equipment-item\">&nbsp;</div>");
+			cnt++;
+		}		
+		r.push("<div class=\"st-clear\"></div>");
+		$(".st-page-ft").append(r.join(""));
 	}
+	
 };

@@ -1,5 +1,4 @@
 /* st-char.css */
-
 .st-title {
 	background: #000000;
 	color: #ffffff;
@@ -22,21 +21,20 @@
 }
 
 /* st-name */
-
 .st-name {
 	margin-bottom: 10px;
-	width: 977px;	
+	width: 977px;
 }
 
 .st-name th, .st-name td {
 	font-family: "Courier New", serif;
-	font-size: 22px;	
+	font-size: 22px;
 	padding: 0 4px;
-	text-transform: capitalize;	
+	text-transform: capitalize;
 }
 
 .st-name th {
-	text-align: right;	
+	text-align: right;
 	width: 100px;
 }
 
@@ -47,7 +45,6 @@
 }
 
 /* st-attributes */
-
 .st-attributes {
 	border: 1px solid #000000;
 	margin-bottom: 10px;
@@ -87,7 +84,6 @@
 }
 
 /* st-frosty */
-
 .st-frosty {
 	border: 1px solid #000000;
 	margin-bottom: 10px;
@@ -128,20 +124,19 @@
 	text-transform: capitalize;
 }
 
-.st-frosty td.mos table th, .st-frosty td.mos table td,
-.st-frosty td.rank table th, .st-frosty td.rank table td {
+.st-frosty td.mos table th, .st-frosty td.mos table td, .st-frosty td.rank table th,
+	.st-frosty td.rank table td {
 	background-color: #ffffff;
 	border: 1px solid transparent;
 	color: #000000;
 	font-family: "Ampersand", sans-serif;
-	font-size: 14px; 
+	font-size: 14px;
 	text-align: left;
 	text-transform: capitalize;
 	vertical-align: top;
 }
 
-.st-frosty td table th,
-.st-frosty td table td {
+.st-frosty td table th, .st-frosty td table td {
 	padding: 0 4px;
 }
 
@@ -152,19 +147,18 @@
 
 .st-frosty td.frostiness {
 	padding-left: 5%;
-    text-align: left;	
+	text-align: left;
 }
 
-.st-frosty td.hit-points,
-.st-frosty td.armor {
+.st-frosty td.hit-points, .st-frosty td.armor {
 	font-family: "Ampersand";
 	font-size: 60px;
 	font-weight: bold;
 }
 
 /* st-weapons */
-
-.st-weapons {
+.st-weapons,
+.st-equipment {
 	border: 1px solid #000000;
 	margin-bottom: 10px;
 	width: 977px;
@@ -178,7 +172,8 @@
 	text-align: center;
 }
 
-.st-weapons th {
+.st-weapons th,
+.st-equipment th {
 	background-color: #000000;
 	border: 1px solid #000000;
 	color: #ffffff;
@@ -195,7 +190,29 @@
 
 .st-weapons td {
 	border: 1px solid #000000;
-	font-family: "Courier New", serif;
+	font-family: "Ampersand";
 	text-transform: capitalize;
 	vertical-align: top;
-}	
+}
+
+/* equipmenet */
+
+.st-equipment th.st-equipment-desc {
+	background: #000000;
+	color: #ffffff;
+	font-family: 'Pixel Emulator', sans-serif;
+	font-size: 22px;
+	text-align: center;
+}
+
+.st-equipment-item {
+	border: 1px solid #000000;
+	float: left;
+	font-family: "Ampersand";
+	height: 50px;
+	width: 16.6%;
+}
+
+.st-clear {
+	clear: both;
+}
