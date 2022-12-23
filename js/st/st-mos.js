@@ -173,6 +173,5 @@ st.mos = [
 				"inventory": "badass beret"
 			}
 		]
-		
 	}
 ];

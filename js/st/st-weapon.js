@@ -26,7 +26,6 @@ st.weapon = {
 	names: function() {
 		var ret = [];
 		_.each(st.weapon.specs, function(spec) {
-			st.log("spec.weapon:" + spec.weapon);
 			ret.push(spec.weapon);
 		});
 		return ret;

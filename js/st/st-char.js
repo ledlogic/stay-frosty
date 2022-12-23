@@ -70,6 +70,8 @@ st.char = {
 		st.log("char.randomHitpoints");
 		var hp = st.math.die(1, 6, 4);
 		st.char.spec.frosty["hit points"] = hp;
+		
+		// TODO: add rank bonus
 	},
 		
 	randomMOS: function() {
@@ -141,6 +143,16 @@ st.char = {
 				rank = "lieutenant";
 			}
 			st.char.spec.frosty.rank = rank;
+
+			var rankObj = st.char.findRank(rank);
+			_.each(rankObj.benefits, function(benefit) {
+				if (benefit.type === "equipment") {
+				//debugger;
+					if (benefit.inventory) {
+						st.char.spec.equipment.push(benefit.inventory);
+					}
+				}			
+			});				
 		}
 	},
 	

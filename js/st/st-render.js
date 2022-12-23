@@ -184,10 +184,9 @@ st.render = {
 		});
 		
 		// character weapons
+		// weapons are part of equipment but are found in the weapon list
 		_.each(st.char.spec.equipment, function(equipment) {
-			st.log("checking if weapon, " + equipment);
 			if (st.weapon.containsName(equipment)) {
-				st.log("is weapon");
 				var spec = st.weapon.getName(equipment);
 				if (spec) {
 					r.push("<tr>");
