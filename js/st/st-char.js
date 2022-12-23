@@ -16,7 +16,8 @@ st.char = {
 			"armor": 0,
 			"frostiness": 1,
 			"mos": null,
-			"rank": null
+			"rank": null,
+			"psi": null
 		},
 		equipment: []
 	},
@@ -38,7 +39,7 @@ st.char = {
 		st.char.randomMOS();
 		st.char.randomRank();
 		st.char.levelMOSAttributes();
-		st.char.levelActions();
+		st.char.levelUp();
 		st.char.randomHitpoints();
 		st.char.randomEquipment();
 	},
@@ -74,17 +75,31 @@ st.char = {
 		st.char.spec.attributes[highest.key] = st.char.randomStat();
 	},
 	
-	levelActions: function() {
+	levelUp: function() {
 		st.log("char.levelActions");
 
 		// leveling up
 		var level = st.char.spec.level;
-		st.log("level[" + level + "]");
 		
-		var additionalActions = Math.floor((level-1) / 2);
-		st.log("additionalActions[" + additionalActions + "]");
+		var additionals = Math.floor((level-1) / 2);
+
+		// add actions
+		st.char.spec.actions += additionals;
 		
-		st.char.spec.actions += additionalActions;
+		// add psi
+		var size = _.size(st.psi);
+		var psi = st.char.spec.frosty.psi;
+		if (psi) {
+			for (var j=0;j<additionals;j++) {
+				var i = st.math.dieN0(size);
+				var psiI = st.psi[i];
+				if (psi.indexOf(psiI.name) === -1) {
+					psi.push(psiI.name);
+				}
+			}
+			psi = psi.sort();
+			st.char.spec.frosty.psi = psi;
+		}
 	},
 	
 	levelMOSAttributes: function(i) {
@@ -92,7 +107,6 @@ st.char = {
 		
 		// leveling up
 		var level = st.char.spec.level;
-		st.log("level[" + level + "]");
 		
 		var mos = st.char.spec.frosty.mos;
 		var rank = st.char.spec.frosty.rank;
@@ -124,16 +138,13 @@ st.char = {
 				if (d20 == -1) {
 					d20 = st.math.dieN(20);
 				}
-				st.log("d20[" + d20 + "]");
 				if (d20 < val) {
 					mods[key] = -1;
 				}
 			}
 		});
 		
-		st.log("mods[" + mods + "]");
 		_.map(st.char.spec.attributes, function(val, key) {
-			st.log("st.char.spec.attributes[" + key + "][" + st.char.spec.attributes[key] + "]");
 			st.char.spec.attributes[key] -= mods[key];
 		});
 	},
@@ -156,8 +167,6 @@ st.char = {
 				rankHp = level;
 			}
 		});
-		
-		st.log("hp[" + hp + "], levelHp[" + levelHp + "], rankHp[" + rankHp + "]");
 		st.char.spec.frosty["hit points"] = (hp + levelHp + rankHp);
 	},
 		
@@ -188,18 +197,13 @@ st.char = {
 		st.log("char.processMOS");
 		var mos = st.char.spec.frosty.mos;
 		_.each(mos.benefits, function(benefit) {
-			st.log("benefit[" + benefit + "]");
 			if (benefit.type === "rank") {
-				st.log("benefitrank");
 				st.char.spec.frosty.rank = benefit.inventory;
 			}			
 			if (benefit.type === "equipment") {
-				st.log("benefitequipment");
 				if (benefit.roll) {
-					st.log("rolling for equipment");
 					var roll = st.math.dieN(6);
 					var result = benefit.roll[roll];
-					st.log("result[" + result + "]");
 					benefit.inventory = result;
 					st.char.spec.equipment.push(result);
 				} else if (benefit.inventory) {
@@ -207,7 +211,6 @@ st.char = {
 				}
 			}			
 			if (benefit.type === "ability" && benefit.inventory === "psi-powers") {
-				st.log("benefitability");
 				var psi = [];
 				var size = _.size(st.psi);
 				while (psi.length < 3) {
