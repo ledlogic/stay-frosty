@@ -42,6 +42,7 @@ st.char = {
 		st.char.levelUp();
 		st.char.randomHitpoints();
 		st.char.randomEquipment();
+		st.char.randomArmor();
 	},
 	
 	randomName: function() {
@@ -276,6 +277,15 @@ st.char = {
 				return;
 			}
 			st.char.spec.equipment.push(base.equipment);
+		});
+	},
+	
+	randomArmor: function() {
+		var baseEquipment = st.equipment.base;
+		_.each(baseEquipment, function(base) {
+			if (base.equipment == "back-and-breast armor" || base.equipment == "helmet") {
+				st.char.spec.frosty.armor++;
+			}
 		});
 	}
 };
