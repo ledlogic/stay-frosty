@@ -278,12 +278,25 @@ st.char = {
 			}
 			st.char.spec.equipment.push(base.equipment);
 		});
+		
+		// remove helmet if no helmet exists
+		_.each(st.char.spec.equipment, function(equipment) {
+			if (equipment == "no helmet") {
+				st.char.spec.equipment = _.reject(st.char.spec.equipment, function(d) {
+					return d == "helmet";
+				});
+			}
+		});
+		
+		// remove the pseudo-equipment, no helmet
+		st.char.spec.equipment = _.reject(st.char.spec.equipment, function(d) {
+			return d == "no helmet";
+		});
 	},
 	
 	randomArmor: function() {
-		var baseEquipment = st.equipment.base;
-		_.each(baseEquipment, function(base) {
-			if (base.equipment == "back-and-breast armor" || base.equipment == "helmet") {
+		_.each(st.char.spec.equipment, function(equipment) {
+			if (equipment == "back-and-breast armor" || equipment == "helmet") {
 				st.char.spec.frosty.armor++;
 			}
 		});

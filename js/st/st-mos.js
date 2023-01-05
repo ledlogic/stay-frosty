@@ -167,7 +167,11 @@ st.mos = [
 					5: "LAW",
 					6: "sniper rifle"
 				} 
-			}, 
+			},
+			{ 
+				"type": "equipment",
+				"inventory": "no helmet"
+			},
 			{ 
 				"type": "equipment",
 				"inventory": "badass beret"
