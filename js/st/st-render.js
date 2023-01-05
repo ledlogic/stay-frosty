@@ -233,7 +233,7 @@ st.render = {
 			cnt++;
 		}		
 		r.push("<div class=\"st-clear\"></div>");
-		r.push("<p>carry " + (21-st.char.spec.attributes.brawn) + ", more is disadvantage</p>");
+		r.push("<p class=\"carry-limit\">carry " + (21-st.char.spec.attributes.brawn) + ", more is disadvantage</p>");
 		$(".st-page-ft").append(r.join(""));
 	}
 	

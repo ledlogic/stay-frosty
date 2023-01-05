@@ -216,3 +216,8 @@
 .st-clear {
 	clear: both;
 }
+
+.carry-limit {
+	margin-top: 8px;
+}
+}
