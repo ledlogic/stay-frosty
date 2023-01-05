@@ -30,6 +30,13 @@ st.char = {
 		if (level) {
 			st.char.spec.level = parseInt(level,10);
 		}
+		var mos = url.param("mos");
+		var mosObj = _.find(st.mos, function(item) {
+  			return item.name == mos; 
+		});
+		if (mosObj) {
+			st.char.spec.frosty.mos = mosObj;
+		}		
 	},
 	
 	random: function() {
@@ -77,7 +84,7 @@ st.char = {
 	},
 	
 	levelUp: function() {
-		st.log("char.levelActions");
+		st.log("char.levelUp");
 
 		// leveling up
 		var level = st.char.spec.level;
@@ -173,6 +180,11 @@ st.char = {
 		
 	randomMOS: function() {
 		st.log("char.randomMOS");
+		
+		if (st.char.spec.frosty.mos) {
+			return;
+		}
+		
 		var foundMOS = null;
 		while (foundMOS == null) {
 			var mos = st.mos[st.math.dieArray(st.mos)];
@@ -190,12 +202,14 @@ st.char = {
 			}
 			foundMOS = matches === matchesExpected ? mos : null;
 		}
+		
 		st.char.spec.frosty.mos = foundMOS;
 		st.char.processMOS();
 	},
 	
 	processMOS: function() {
 		st.log("char.processMOS");
+		
 		var mos = st.char.spec.frosty.mos;
 		_.each(mos.benefits, function(benefit) {
 			if (benefit.type === "rank") {
@@ -289,8 +303,8 @@ st.char = {
 		});
 		
 		// remove the pseudo-equipment, no helmet
-		st.char.spec.equipment = _.reject(st.char.spec.equipment, function(d) {
-			return d == "no helmet";
+		st.char.spec.equipment = _.reject(st.char.spec.equipment, function(equipment) {
+			return equipment == "no helmet";
 		});
 	},
 	
