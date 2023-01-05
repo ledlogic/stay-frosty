@@ -180,30 +180,27 @@ st.char = {
 		
 	randomMOS: function() {
 		st.log("char.randomMOS");
-		
-		if (st.char.spec.frosty.mos) {
-			return;
-		}
-		
-		var foundMOS = null;
-		while (foundMOS == null) {
-			var mos = st.mos[st.math.dieArray(st.mos)];
-			var matches = 0;
-			var matchesExpected = mos.attributeMax.length;
-			if (matchesExpected > 0) {
-				for (var i=0; i<matchesExpected; i++) {
-					var am = mos.attributeMax[i];
-					_.map(am, function(max, attribute) {
-						var val = st.char.spec.attributes[attribute];
-						var match = (val <= max) ? 1 : 0;
-						matches += match;
-					});
+		if (!st.char.spec.frosty.mos) {
+			var foundMOS = null;
+			while (foundMOS == null) {
+				var mos = st.mos[st.math.dieArray(st.mos)];
+				var matches = 0;
+				var matchesExpected = mos.attributeMax.length;
+				if (matchesExpected > 0) {
+					for (var i=0; i<matchesExpected; i++) {
+						var am = mos.attributeMax[i];
+						_.map(am, function(max, attribute) {
+							var val = st.char.spec.attributes[attribute];
+							var match = (val <= max) ? 1 : 0;
+							matches += match;
+						});
+					}
 				}
+				foundMOS = matches === matchesExpected ? mos : null;
 			}
-			foundMOS = matches === matchesExpected ? mos : null;
+			
+			st.char.spec.frosty.mos = foundMOS;
 		}
-		
-		st.char.spec.frosty.mos = foundMOS;
 		st.char.processMOS();
 	},
 	
